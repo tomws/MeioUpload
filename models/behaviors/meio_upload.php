@@ -92,7 +92,7 @@ class MeioUploadBehavior extends ModelBehavior {
 
 			// Replace tokens of the dir and field, check it doesn't have a DS on the end
 			$options['dir'] = rtrim($this->_replaceTokens($model, $options['dir'], $field), DS);
-			$options['dir'] = $this->_normalizePath($options['dir']);
+			//$options['dir'] = $this->_normalizePath($options['dir']);
 
 			// Replace tokens in the fields names
 			foreach ($options['fields'] as $fieldToken => $fieldName) {
@@ -554,8 +554,8 @@ class MeioUploadBehavior extends ModelBehavior {
  */
 	function _replaceTokens(&$model, $string, $fieldName) {
 		return str_replace(
-			array('{ModelName}', '{fieldName}', '{DS}', '/', '\\'),
-			array(Inflector::underscore($model->name), $fieldName, DS, DS, DS),
+			array('{ModelName}', '{fieldName}', '{DS}'),//, '/', '\\'),
+			array(Inflector::underscore($model->name), $fieldName, DS),//, DS, DS),
 			$string
 		);
 	}
